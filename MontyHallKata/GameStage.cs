@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MontyHallKata
 {
-    public class GameShow
+    public class GameStage
     {
         public List<Door> AllDoors;
 
-        public GameShow()
+        public GameStage()
         {
             AllDoors = new List<Door>();
             // 3 door objects numbered 1,2 and 3
@@ -15,7 +16,8 @@ namespace MontyHallKata
                 var newDoor = new Door(i+1);
                 AllDoors.Add(newDoor);
             }
-            
         }
+        
+       
     }
 }

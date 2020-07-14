@@ -5,14 +5,14 @@ using Xunit;
 
 namespace MontyHallTests
 {
-    public class GameShowTests
+    public class GameStageTests
     {
         [Fact]
         public void NewAllDoorsShouldContain3Doors()
         {
             //arrange
             //action
-            var gameShow = new GameShow();
+            var gameShow = new GameStage();
             var amountOfDoors = gameShow.AllDoors.Count();
             
             //assert
@@ -22,11 +22,13 @@ namespace MontyHallTests
         [Fact]
         public void ThirdDoorShouldBeNumber3()
         {
-            var gameShow = new GameShow();
+            var gameShow = new GameStage();
             var thirdDoor = gameShow.AllDoors[2].Number;
 
             Assert.Equal(3, thirdDoor);
         }
+
+        
         
         
     }
