@@ -19,6 +19,7 @@ namespace MontyHallTests
             Assert.Equal(3, amountOfDoors);
         }
 
+        //TODO make this into a theory based test and test first and second door as well!
         [Fact]
         public void ThirdDoorShouldBeNumber3()
         {
