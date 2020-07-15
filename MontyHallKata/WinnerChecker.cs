@@ -5,6 +5,9 @@ namespace MontyHallKata
 {
     public class WinnerChecker
     {
+        // TODO change this!! but watch out for the tests!
+        // public int Score { get; private set;}
+
         private int Score { get; set;}
 
         public void KeepScore(List<Door> allDoors)

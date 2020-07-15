@@ -9,9 +9,6 @@ namespace MontyHallKata
 
         public Door(int incomingNumber)
         {
-            // Winner = false;
-            // Open = false;
-            // Chosen = false;
             Number = incomingNumber;
         }
         
