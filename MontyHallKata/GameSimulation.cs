@@ -8,6 +8,7 @@ namespace MontyHallKata
         public abstract void ChangeStrategy(List<Door> allDoors, DoorSelector doorSelector);
 
         public abstract string GetFinalScore(WinnerChecker winnerChecker);
+        
         public void Run()
         {
             var randomNumber = new RandomNumber();
