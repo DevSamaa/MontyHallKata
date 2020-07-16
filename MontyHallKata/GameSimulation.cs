@@ -5,7 +5,7 @@ namespace MontyHallKata
 {
     public abstract class GameSimulation
     {
-        public abstract void ChangeStrategy(List<Door> allDoors, DoorSelector doorSelector);
+        public abstract void ChangeStrategy(List<Door> allDoors);
 
         public abstract string GetFinalScore(WinnerChecker winnerChecker);
         
@@ -32,7 +32,7 @@ namespace MontyHallKata
                 doorSelector.ChangePropertyOpen(allDoors);
                 
                 //apply change strategy
-                ChangeStrategy(allDoors,doorSelector);
+                ChangeStrategy(allDoors);
                 
                 winnerChecker.KeepScore(allDoors);  
             }
@@ -40,3 +40,4 @@ namespace MontyHallKata
         }
     }
 }
+

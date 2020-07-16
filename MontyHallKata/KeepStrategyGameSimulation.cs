@@ -4,7 +4,7 @@ namespace MontyHallKata
 {
     public class KeepStrategyGameSimulation :GameSimulation
     {
-        public override void ChangeStrategy(List<Door> allDoors, DoorSelector doorSelector)
+        public override void ChangeStrategy(List<Door> allDoors)
         {
             
         }
