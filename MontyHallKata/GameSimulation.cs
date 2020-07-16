@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace MontyHallKata
 {
-    public abstract class GameSimulation
+    public class GameSimulation
     {
-        public abstract void ChangeStrategy(List<Door> allDoors, DoorSelector doorSelector);
-
-        public abstract string GetFinalScore(WinnerChecker winnerChecker);
+        private IChangeStrategy _changeStrategy;
+        public GameSimulation(IChangeStrategy changeStrategy)
+        {
+            _changeStrategy = changeStrategy;
+        }
         
         public void Run()
         {
@@ -32,11 +34,13 @@ namespace MontyHallKata
                 doorSelector.ChangePropertyOpen(allDoors);
                 
                 //apply change strategy
-                ChangeStrategy(allDoors,doorSelector);
-                
+                _changeStrategy.ChangeSelection(allDoors, doorSelector);
+
                 winnerChecker.KeepScore(allDoors);  
             }
-            Console.WriteLine(GetFinalScore(winnerChecker));
+            // Console.WriteLine(GetFinalScore(winnerChecker));
+            Console.WriteLine(_changeStrategy.GetFinalScore(winnerChecker));
+            
         }
     }
 }

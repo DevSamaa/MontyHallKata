@@ -66,7 +66,7 @@ namespace MontyHallTests
             gameStage.AllDoors[0].Chosen = true;
             gameStage.AllDoors[1].Open = true;
 
-            doorSelector.ChangeStrategy(gameStage.AllDoors);
+            doorSelector.ChangeDoors(gameStage.AllDoors);
             
             Assert.True(gameStage.AllDoors[2].Chosen);
             Assert.False(gameStage.AllDoors[0].Chosen);
