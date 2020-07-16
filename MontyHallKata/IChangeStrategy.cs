@@ -6,6 +6,6 @@ namespace MontyHallKata
     {
         public void ChangeSelection(List<Door> allDoors, DoorSelector doorSelector);
         
-        public string GetFinalScore(WinnerChecker winnerChecker);
+        public string GetFinalScore(ScoreBoard scoreBoard);
     }
 }

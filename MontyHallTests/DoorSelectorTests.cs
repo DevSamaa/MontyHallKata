@@ -57,17 +57,20 @@ namespace MontyHallTests
             Assert.False(gameStage.AllDoors[0].Open);
         }
 
+        //TODO move this into its own test file - it no longer falls under the doorselector part
         [Fact]
         public void ShouldChoseDoor3()
         {
             var gameStage = new GameStage();
             var doorSelector = new DoorSelector();
+            var changeStrategy = new ChangeStrategy();
             
             gameStage.AllDoors[0].Chosen = true;
             gameStage.AllDoors[1].Open = true;
 
-            doorSelector.ChangeDoors(gameStage.AllDoors);
-            
+            // doorSelector.ChangeDoors(gameStage.AllDoors);
+            changeStrategy.ChangeSelection(gameStage.AllDoors,doorSelector);
+
             Assert.True(gameStage.AllDoors[2].Chosen);
             Assert.False(gameStage.AllDoors[0].Chosen);
         }

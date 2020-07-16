@@ -5,21 +5,9 @@ namespace MontyHallKata
 {
     public class WinnerChecker
     {
-        // TODO change this!! but watch out for the tests!
-        // public int Score { get; private set;}
-
-        private int Score { get; set;}
-
-        public void KeepScore(List<Door> allDoors)
+        public bool IsWinner(List<Door> allDoors)
         {
-            var isWinner = allDoors.Any(door => door.Winner && door.Chosen);
-
-            if (isWinner)
-            {
-                Score++;
-            }
+            return allDoors.Any(door => door.Winner && door.Chosen);
         }
-
-        public int GetScore() => Score;
     }
 }

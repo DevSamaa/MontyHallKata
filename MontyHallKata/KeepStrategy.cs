@@ -9,9 +9,9 @@ namespace MontyHallKata
             
         }
 
-        public string GetFinalScore(WinnerChecker winnerChecker)
+        public string GetFinalScore(ScoreBoard scoreBoard)
         {
-            return $"The score using the KeepStrategy is: {winnerChecker.GetScore()}";
+            return $"The score using the KeepStrategy is: {scoreBoard.Score}";
         }
     }
 }

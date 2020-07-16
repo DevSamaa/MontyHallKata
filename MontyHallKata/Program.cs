@@ -6,13 +6,15 @@ namespace MontyHallKata
     {
         static void Main(string[] args)
         {
+            var rounds = 1000;
+            
             var keepStrategy = new KeepStrategy();
             var gameSimulation = new GameSimulation(keepStrategy);
-            gameSimulation.Run();
+            gameSimulation.Run(rounds);
 
            var changeStrategy = new ChangeStrategy();
            gameSimulation = new GameSimulation(changeStrategy);
-           gameSimulation.Run();
+           gameSimulation.Run(rounds);
         }
     }
 }
