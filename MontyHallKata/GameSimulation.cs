@@ -14,12 +14,13 @@ namespace MontyHallKata
         public void Run(int rounds)
         {
             var scoreBoard = new ScoreBoard();
+            var randomNumber = new RandomNumber();
 
             for (int i = 1; i <= rounds; i++)
             {
-                if (PlayARound())
+                if (PlayARound(randomNumber))
                 {
-                    scoreBoard.KeepScore();
+                    scoreBoard.IncrementScore();
                 }
                 
             }
@@ -27,9 +28,8 @@ namespace MontyHallKata
             
         }
 
-        private bool PlayARound()
+        private bool PlayARound(RandomNumber randomNumber)
         {
-            var randomNumber = new RandomNumber();
             var doorSelector = new DoorSelector();
             var winnerChecker = new WinnerChecker();
 
@@ -57,6 +57,6 @@ namespace MontyHallKata
     }
 }
 
-
+//TODO write test for PlayARound
 
 //figure out how to mock the randomNumber class

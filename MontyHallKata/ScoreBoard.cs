@@ -4,7 +4,7 @@ namespace MontyHallKata
     {
         public int Score { get; private set;}
 
-        public void KeepScore()
+        public void IncrementScore()
         {
             Score++;
         }
