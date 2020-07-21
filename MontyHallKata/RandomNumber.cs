@@ -2,7 +2,7 @@ using System;
 
 namespace MontyHallKata
 {
-    public class RandomNumber
+    public class RandomNumber :IRandomNumber
     {
         public int MinValue;
         public int MaxValue;

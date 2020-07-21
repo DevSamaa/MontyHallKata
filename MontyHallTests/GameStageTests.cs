@@ -19,14 +19,17 @@ namespace MontyHallTests
             Assert.Equal(3, amountOfDoors);
         }
 
-        //TODO make this into a theory based test and test first and second door as well!
         [Fact]
-        public void ThirdDoorShouldBeNumber3()
+        public void DoorsOneTwoAndThreeShouldExist()
         {
             var gameShow = new GameStage();
-            var thirdDoor = gameShow.AllDoors[2].Number;
+            var door1 = gameShow.AllDoors[0].Number;
+            var door2 = gameShow.AllDoors[1].Number;
+            var door3 = gameShow.AllDoors[2].Number;
 
-            Assert.Equal(3, thirdDoor);
+            Assert.Equal(1, door1);
+            Assert.Equal(2, door2);
+            Assert.Equal(3, door3);
         }
 
         

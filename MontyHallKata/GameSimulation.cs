@@ -28,7 +28,7 @@ namespace MontyHallKata
             
         }
 
-        private bool PlayARound(RandomNumber randomNumber)
+        public bool PlayARound(IRandomNumber randomNumber)
         {
             var doorSelector = new DoorSelector();
             var winnerChecker = new WinnerChecker();
@@ -56,7 +56,3 @@ namespace MontyHallKata
         }
     }
 }
-
-//TODO write test for PlayARound
-
-//figure out how to mock the randomNumber class

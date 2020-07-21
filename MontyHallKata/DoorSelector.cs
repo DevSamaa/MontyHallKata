@@ -30,9 +30,15 @@ namespace MontyHallKata
 
            if (eligibleDoors.Count() > 1)
            {
-               var randomNumber = new RandomNumber(1,3).Generate();
-               eligibleDoors[randomNumber - 1].Open = true;
+               var randomNumber = new RandomNumber(1, 3);
+               OpenOneOfTheDoors(randomNumber, eligibleDoors);
            }
+        }
+
+        public void OpenOneOfTheDoors(IRandomNumber randomNumber, List<Door> eligibleDoors)
+        {
+            var newNumber = randomNumber.Generate();
+            eligibleDoors[newNumber - 1].Open = true;
         }
 
       
