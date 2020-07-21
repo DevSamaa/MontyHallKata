@@ -5,21 +5,30 @@ namespace MontyHallKata
 {
     public class DoorSelector
     {
-        public void ChangePropertyWinner(int randomNumber, List<Door> allDoors)
+
+        private IRandomNumberGenerator _randomNumberGenerator;
+
+        public DoorSelector(IRandomNumberGenerator randomNumberGenerator)
         {
+            _randomNumberGenerator = randomNumberGenerator;
+        }
+
+        public void SetWinningDoor( List<Door> allDoors)
+        {
+            var randomNumber = _randomNumberGenerator.Generate();
             var currentDoor =allDoors.Find(door => door.Number == randomNumber);
             
             currentDoor.Winner = true;
         }
         
-        public void ChangePropertyChosen(int randomNumber, List<Door> allDoors)
+        public void SetChosenDoor(int randomNumber, List<Door> allDoors)
         {
             var currentDoor =allDoors.Find(door => door.Number == randomNumber);
             
             currentDoor.Chosen = true;
         }
 
-        public void ChangePropertyOpen(List<Door> allDoors)
+        public void SetOpenDoor(List<Door> allDoors)
         {
            var eligibleDoors= allDoors.Where(door => door.Winner == false && door.Chosen == false).ToList();
            
@@ -30,16 +39,12 @@ namespace MontyHallKata
 
            if (eligibleDoors.Count() > 1)
            {
-               var randomNumber = new RandomNumber(1, 3);
-               OpenOneOfTheDoors(randomNumber, eligibleDoors);
+               var newNumber = _randomNumberGenerator.Generate(1, 3);
+               eligibleDoors[newNumber - 1].Open = true;
            }
         }
 
-        public void OpenOneOfTheDoors(IRandomNumber randomNumber, List<Door> eligibleDoors)
-        {
-            var newNumber = randomNumber.Generate();
-            eligibleDoors[newNumber - 1].Open = true;
-        }
+       
 
       
     }

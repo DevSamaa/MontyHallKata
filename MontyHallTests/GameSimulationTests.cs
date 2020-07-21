@@ -10,7 +10,7 @@ namespace MontyHallTests
         public void PlayingAWinningRoundShouldReturnTrueWithDouble()
         {
             var gameSimulation = new GameSimulation(new KeepStrategy());
-            var mockRandomNumber = new Always1RandomNumber();
+            var mockRandomNumber = new Always1RandomNumberGenerator();
             var result = gameSimulation.PlayARound(mockRandomNumber);
             Assert.True(result);
         }
@@ -19,7 +19,7 @@ namespace MontyHallTests
         public void PlayingAWinningRoundShouldReturnTrueWithKeepStrategy()
         {
             var gameSimulation = new GameSimulation(new KeepStrategy());
-            var mockRandomNumber = Substitute.For<IRandomNumber>();
+            var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
             mockRandomNumber.Generate().Returns(1);
             var result = gameSimulation.PlayARound(mockRandomNumber);
             Assert.True(result);
@@ -29,7 +29,7 @@ namespace MontyHallTests
         public void PlayingALosingRoundShouldReturnFalseWithKeepStrategy()
         {
             var gameSimulation = new GameSimulation(new KeepStrategy());
-            var mockRandomNumber = Substitute.For<IRandomNumber>();
+            var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
             mockRandomNumber.Generate().Returns(1,3);
             var result = gameSimulation.PlayARound(mockRandomNumber);
             Assert.False(result);
@@ -40,7 +40,7 @@ namespace MontyHallTests
         public void PlayingAWinningRoundShouldReturnTrueWithChangeStrategy()
         {
             var gameSimulation = new GameSimulation(new ChangeStrategy());
-            var mockRandomNumber = Substitute.For<IRandomNumber>();
+            var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
             mockRandomNumber.Generate().Returns(1,3);
             var result = gameSimulation.PlayARound(mockRandomNumber);
             Assert.True(result);
@@ -50,7 +50,7 @@ namespace MontyHallTests
         public void PlayingALosingRoundShouldReturnFalseWithChangeStrategy()
         {
             var gameSimulation = new GameSimulation(new ChangeStrategy());
-            var mockRandomNumber = Substitute.For<IRandomNumber>();
+            var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
             mockRandomNumber.Generate().Returns(1,1);
             var result = gameSimulation.PlayARound(mockRandomNumber);
             Assert.False(result);
