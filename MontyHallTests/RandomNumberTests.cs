@@ -11,7 +11,7 @@ namespace MontyHallTests
         [Fact]
         public void GeneratorShouldReturnNumberBetween1And3()
         {
-            var randomNumber = new RandomNumber();
+            var randomNumber = new RandomNumberGenerator();
             var result = randomNumber.Generate();
             
             Assert.True(result >0 && result <4);
@@ -22,7 +22,7 @@ namespace MontyHallTests
         {
             var listOfNumbers = new List<int>();
             
-            var randomNumber = new RandomNumber();
+            var randomNumber = new RandomNumberGenerator();
 
             for (int i = 0; i < 100; i++)
             {

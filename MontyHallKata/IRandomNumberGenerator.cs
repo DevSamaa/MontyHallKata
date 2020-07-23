@@ -1,6 +1,6 @@
 namespace MontyHallKata
 {
-    public interface IRandomNumber
+    public interface IRandomNumberGenerator
     {
         public int Generate();
     }

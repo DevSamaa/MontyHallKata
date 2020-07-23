@@ -2,18 +2,18 @@ using System;
 
 namespace MontyHallKata
 {
-    public class RandomNumber :IRandomNumber
+    public class RandomNumberGenerator :IRandomNumberGenerator
     {
         public int MinValue;
         public int MaxValue;
         
-        public RandomNumber()
+        public RandomNumberGenerator()
         {
             MinValue = 1;
             MaxValue = 4;
         }
         
-        public RandomNumber(int incomingMin, int incomingMax)
+        public RandomNumberGenerator(int incomingMin, int incomingMax)
         {
             MinValue = incomingMin;
             MaxValue = incomingMax;

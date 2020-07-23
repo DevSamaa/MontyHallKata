@@ -14,7 +14,7 @@ namespace MontyHallKata
         public void Run(int rounds)
         {
             var scoreBoard = new ScoreBoard();
-            var randomNumber = new RandomNumber();
+            var randomNumber = new RandomNumberGenerator();
 
             for (int i = 1; i <= rounds; i++)
             {
@@ -28,7 +28,7 @@ namespace MontyHallKata
             
         }
 
-        public bool PlayARound(IRandomNumber randomNumber)
+        public bool PlayARound(IRandomNumberGenerator randomNumberGenerator)
         {
             var doorSelector = new DoorSelector();
             var winnerChecker = new WinnerChecker();
@@ -37,18 +37,18 @@ namespace MontyHallKata
             var allDoors = gameStage.AllDoors;
                 
             //set a winning door
-            var num =randomNumber.Generate();
-            doorSelector.ChangePropertyWinner(num,allDoors);
+            var num =randomNumberGenerator.Generate();
+            doorSelector.SetWinningDoor(num,allDoors);
             
             //set the chosen (by user) door
-            num =randomNumber.Generate();
-            doorSelector.ChangePropertyChosen(num, allDoors);
+            num =randomNumberGenerator.Generate();
+            doorSelector.SetChosenDoor(num, allDoors);
             
             // determine which door to open (the computer)
-            doorSelector.ChangePropertyOpen(allDoors);
+            doorSelector.SetOpenDoor(allDoors);
                 
             //apply change strategy
-            _changeStrategy.ChangeSelection(allDoors, doorSelector);
+            _changeStrategy.ChangeSelection(allDoors);
             
             // winnerChecker.KeepScore(allDoors);  
             return winnerChecker.IsWinner(allDoors);

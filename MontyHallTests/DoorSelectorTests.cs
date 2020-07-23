@@ -17,7 +17,7 @@ namespace MontyHallTests
             Assert.False(thirdDoor.Winner);
             
             //run the method
-            doorSelector.ChangePropertyWinner(3,gameStage.AllDoors);
+            doorSelector.SetWinningDoor(3,gameStage.AllDoors);
 
             //winner should now be true
             Assert.True(thirdDoor.Winner);
@@ -35,7 +35,7 @@ namespace MontyHallTests
             Assert.False(thirdDoor.Chosen);
             
             //run the method
-            doorSelector.ChangePropertyChosen(3,gameStage.AllDoors);
+            doorSelector.SetChosenDoor(3,gameStage.AllDoors);
 
             //winner should now be true
             Assert.True(thirdDoor.Chosen);
@@ -50,7 +50,7 @@ namespace MontyHallTests
             gameStage.AllDoors[0].Winner = true;
             gameStage.AllDoors[0].Chosen = true;
             
-            doorSelector.ChangePropertyOpen(gameStage.AllDoors);
+            doorSelector.SetOpenDoor(gameStage.AllDoors);
             
             Assert.True(gameStage.AllDoors[1].Open == true || gameStage.AllDoors[2].Open==true);
             Assert.True(gameStage.AllDoors[1].Open != gameStage.AllDoors[2].Open);

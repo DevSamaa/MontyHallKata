@@ -4,7 +4,7 @@ namespace MontyHallKata
 {
     public class ChangeStrategy : IChangeStrategy
     {
-        public void ChangeSelection(List<Door> allDoors, DoorSelector doorSelector)
+        public void ChangeSelection(List<Door> allDoors)
         {
                 var oldDoor = allDoors.Find(door => door.Chosen);
                 var newDoor = allDoors.Find(door => door.Open == false && door.Chosen == false);

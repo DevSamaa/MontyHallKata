@@ -31,6 +31,18 @@ namespace MontyHallTests
             Assert.Equal(2, door2);
             Assert.Equal(3, door3);
         }
+        
+        [Theory]
+        [InlineData(0,1)]
+        [InlineData(1,2)]
+        [InlineData(2,3)]
+
+        public void DoorsOneTwoAndThreeShouldExistInLine(int indexOfDoor, int expectedDoorNumber)
+        {
+            var gameShow = new GameStage();
+            var result = gameShow.AllDoors[indexOfDoor].Number;
+            Assert.Equal(expectedDoorNumber, result);
+        }
 
         
         

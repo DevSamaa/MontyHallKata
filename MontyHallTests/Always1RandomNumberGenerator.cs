@@ -2,7 +2,7 @@ using MontyHallKata;
 
 namespace MontyHallTests
 {
-    public class Always1RandomNumber :IRandomNumber 
+    public class Always1RandomNumberGenerator :IRandomNumberGenerator 
     {
         public int Generate()
         {
