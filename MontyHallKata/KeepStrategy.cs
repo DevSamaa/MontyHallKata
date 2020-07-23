@@ -4,7 +4,7 @@ namespace MontyHallKata
 {
     public class KeepStrategy : IChangeStrategy
     {
-        public void ChangeSelection(List<Door> allDoors, DoorSelector doorSelector)
+        public void ChangeSelection(List<Door> allDoors)
         {
             
         }

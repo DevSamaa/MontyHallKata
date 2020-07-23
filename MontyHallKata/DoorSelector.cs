@@ -21,8 +21,9 @@ namespace MontyHallKata
             currentDoor.Winner = true;
         }
         
-        public void SetChosenDoor(int randomNumber, List<Door> allDoors)
+        public void SetChosenDoor(List<Door> allDoors)
         {
+            var randomNumber = _randomNumberGenerator.Generate();
             var currentDoor =allDoors.Find(door => door.Number == randomNumber);
             
             currentDoor.Chosen = true;

@@ -32,23 +32,20 @@ namespace MontyHallKata
         {
             var doorSelector = new DoorSelector(randomNumberGenerator);
             var winnerChecker = new WinnerChecker();
-
             var gameStage = new GameStage();
             var allDoors = gameStage.AllDoors;
                 
             //set a winning door
-            var num =randomNumberGenerator.Generate();
             doorSelector.SetWinningDoor(allDoors);
             
             //set the chosen (by user) door
-            num =randomNumberGenerator.Generate();
-            doorSelector.SetChosenDoor(num, allDoors);
+            doorSelector.SetChosenDoor(allDoors);
             
             // determine which door to open (the computer)
             doorSelector.SetOpenDoor(allDoors);
                 
             //apply change strategy
-            _changeStrategy.ChangeSelection(allDoors, doorSelector);
+            _changeStrategy.ChangeSelection(allDoors);
             
             // winnerChecker.KeepScore(allDoors);  
             return winnerChecker.IsWinner(allDoors);

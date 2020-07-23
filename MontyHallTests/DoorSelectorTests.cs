@@ -11,7 +11,7 @@ namespace MontyHallTests
         {
             var gameStage = new GameStage();
             var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
-            mockRandomNumber.Generate(1,3).Returns(3);
+            mockRandomNumber.Generate().Returns(3);
             var doorSelector = new DoorSelector(mockRandomNumber);
             
             //pick a door, check that it's winner = false
@@ -31,7 +31,7 @@ namespace MontyHallTests
         {
             var gameStage = new GameStage();
             var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
-            mockRandomNumber.Generate(1,3).Returns(2);
+            mockRandomNumber.Generate().Returns(3);
             var doorSelector = new DoorSelector(mockRandomNumber);
             
             //pick a door, check that it's winner = false
@@ -40,14 +40,14 @@ namespace MontyHallTests
             Assert.False(thirdDoor.Chosen);
             
             //run the method
-            doorSelector.SetChosenDoor(3,gameStage.AllDoors);
+            doorSelector.SetChosenDoor(gameStage.AllDoors);
 
             //winner should now be true
             Assert.True(thirdDoor.Chosen);
         }
 
         [Fact]
-        public void ShouldOpenADoorOtherThan0()
+        public void ShouldOpen1OnList()
         {
             var gameStage = new GameStage();
             var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
@@ -59,7 +59,7 @@ namespace MontyHallTests
             
             doorSelector.SetOpenDoor(gameStage.AllDoors);
             
-            Assert.True(gameStage.AllDoors[1].Open == true || gameStage.AllDoors[2].Open==true);
+            Assert.True(gameStage.AllDoors[1].Open || gameStage.AllDoors[2].Open==true);
             Assert.True(gameStage.AllDoors[1].Open != gameStage.AllDoors[2].Open);
             Assert.False(gameStage.AllDoors[0].Open);
         }
