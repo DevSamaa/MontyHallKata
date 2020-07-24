@@ -5,10 +5,17 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=77cef019_002Dd244_002D44e2_002D814c_002D33eceead3389/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="All tests from &amp;lt;MontyHallTests&amp;gt;" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
-  &lt;Project Location="/Users/samaa.kanani/Desktop/Learning-C#/MontyHallKata/MontyHallTests" Presentation="&amp;lt;MontyHallTests&amp;gt;" /&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=924b91cb_002D7267_002D4b45_002Dbec4_002De47562643060/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="All tests from &amp;lt;MontyHallTests&amp;gt; #2" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
-  &lt;Project Location="/Users/samaa.kanani/Desktop/Learning-C#/MontyHallKata/MontyHallTests" Presentation="&amp;lt;MontyHallTests&amp;gt;" /&gt;
+  &lt;Or&gt;
+    &lt;Or&gt;
+      &lt;Project Location="/Users/samaa.kanani/Desktop/Learning-C#/MontyHallKata/MontyHallTests" Presentation="&amp;lt;MontyHallTests&amp;gt;" /&gt;
+      &lt;TestAncestor&gt;
+        &lt;TestId&gt;xUnit::608DBCA9-7844-473E-A293-9AAE60152089::.NETCoreApp,Version=v3.1::MontyHallTests.GameSimulationTests&lt;/TestId&gt;
+      &lt;/TestAncestor&gt;
+    &lt;/Or&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::608DBCA9-7844-473E-A293-9AAE60152089::.NETCoreApp,Version=v3.1::MontyHallTests.DoorSelectorTests&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+  &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d122d962_002D73fc_002D43ab_002D8614_002Dc60b99f2dfb1/@EntryIndexedValue">&lt;SessionState ContinuousTestingIsOn="False" ContinuousTestingMode="0" FrameworkVersion="{x:Null}" IsLocked="False" Name="NewAllDoorsShouldContain3Doors" PlatformMonoPreference="{x:Null}" PlatformType="{x:Null}" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
   &lt;Or&gt;

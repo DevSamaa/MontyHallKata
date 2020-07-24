@@ -1,4 +1,6 @@
+using System.Linq;
 using MontyHallKata;
+using NSubstitute;
 using Xunit;
 
 namespace MontyHallTests
@@ -9,7 +11,9 @@ namespace MontyHallTests
         public void ShouldChangeDoorWinnerToTrue()
         {
             var gameStage = new GameStage();
-            var doorSelector = new DoorSelector();
+            var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
+            mockRandomNumber.Generate().Returns(3);
+            var doorSelector = new DoorSelector(mockRandomNumber);
             
             //pick a door, check that it's winner = false
             var thirdDoor = gameStage.AllDoors.Find(door => door.Number == 3);
@@ -17,7 +21,7 @@ namespace MontyHallTests
             Assert.False(thirdDoor.Winner);
             
             //run the method
-            doorSelector.ChangePropertyWinner(3,gameStage.AllDoors);
+            doorSelector.SetWinningDoor(gameStage.AllDoors);
 
             //winner should now be true
             Assert.True(thirdDoor.Winner);
@@ -27,7 +31,9 @@ namespace MontyHallTests
         public void ShouldChangeDoorChosenToTrue()
         {
             var gameStage = new GameStage();
-            var doorSelector = new DoorSelector();
+            var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
+            mockRandomNumber.Generate().Returns(3);
+            var doorSelector = new DoorSelector(mockRandomNumber);
             
             //pick a door, check that it's winner = false
             var thirdDoor = gameStage.AllDoors.Find(door => door.Number == 3);
@@ -35,45 +41,30 @@ namespace MontyHallTests
             Assert.False(thirdDoor.Chosen);
             
             //run the method
-            doorSelector.ChangePropertyChosen(3,gameStage.AllDoors);
+            doorSelector.SetChosenDoor(gameStage.AllDoors);
 
             //winner should now be true
             Assert.True(thirdDoor.Chosen);
         }
 
         [Fact]
-        public void ShouldOpenADoorOtherThan0()
+        public void ShouldOpen3rdDoor()
         {
             var gameStage = new GameStage();
-            var doorSelector = new DoorSelector();
+            var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
+            mockRandomNumber.Generate(0,2).Returns(1);
+            var doorSelector = new DoorSelector(mockRandomNumber);
 
             gameStage.AllDoors[0].Winner = true;
             gameStage.AllDoors[0].Chosen = true;
             
-            doorSelector.ChangePropertyOpen(gameStage.AllDoors);
-            
-            Assert.True(gameStage.AllDoors[1].Open == true || gameStage.AllDoors[2].Open==true);
-            Assert.True(gameStage.AllDoors[1].Open != gameStage.AllDoors[2].Open);
-            Assert.False(gameStage.AllDoors[0].Open);
+            doorSelector.SetOpenDoor(gameStage.AllDoors);
+          
+            Assert.True(gameStage.AllDoors[2].Open); //third door should be open
+            Assert.False(gameStage.AllDoors[0].Open); //checking that winnning/chosen door should not be open
         }
 
         
-        // TODO move this test into its own file later
-        [Fact]
-        public void ShouldChoseDoor3()
-        {
-            var gameStage = new GameStage();
-           var changeStrategyGameSimulation= new ChangeStrategyGameSimulation();
-            
-            gameStage.AllDoors[0].Chosen = true;
-            gameStage.AllDoors[1].Open = true;
-
-            // ChangeStrategy(gameStage.AllDoors);
-            changeStrategyGameSimulation.ChangeStrategy(gameStage.AllDoors);
-            
-            Assert.True(gameStage.AllDoors[2].Chosen);
-            Assert.False(gameStage.AllDoors[0].Chosen);
-        }
     }
 }
 

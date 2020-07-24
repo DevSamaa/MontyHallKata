@@ -3,41 +3,53 @@ using System.Collections.Generic;
 
 namespace MontyHallKata
 {
-    public abstract class GameSimulation
+    public class GameSimulation
     {
-        public abstract void ChangeStrategy(List<Door> allDoors);
-
-        public abstract string GetFinalScore(WinnerChecker winnerChecker);
-        
-        public void Run()
+        private IChangeStrategy _changeStrategy;
+        public GameSimulation(IChangeStrategy changeStrategy)
         {
-            var randomNumber = new RandomNumber();
-            var doorSelector = new DoorSelector();
-            var winnerChecker = new WinnerChecker();
+            _changeStrategy = changeStrategy;
+        }
+        
+        public void Run(int rounds)
+        {
+            var scoreBoard = new ScoreBoard();
+            var randomNumber = new RandomNumberGenerator();
 
-            for (int i = 1; i <= 1000; i++)
+            for (int i = 1; i <= rounds; i++)
             {
-                var gameStage = new GameStage();
-                var allDoors = gameStage.AllDoors;
+                if (PlayARound(randomNumber))
+                {
+                    scoreBoard.IncrementScore();
+                }
                 
-                //set a winning door
-                var num =randomNumber.Generate();
-                doorSelector.ChangePropertyWinner(num,allDoors);
-            
-                //set the chosen (by user) door
-                num =randomNumber.Generate();
-                doorSelector.ChangePropertyChosen(num, allDoors);
-            
-                // determine which door to open (the computer)
-                doorSelector.ChangePropertyOpen(allDoors);
-                
-                //apply change strategy
-                ChangeStrategy(allDoors);
-                
-                winnerChecker.KeepScore(allDoors);  
             }
-            Console.WriteLine(GetFinalScore(winnerChecker));
+            Console.WriteLine(_changeStrategy.GetFinalScore(scoreBoard));
+            
+        }
+
+        public bool PlayARound(IRandomNumberGenerator randomNumberGenerator)
+        {
+            var doorSelector = new DoorSelector(randomNumberGenerator);
+            var winnerChecker = new WinnerChecker();
+            var gameStage = new GameStage();
+            var allDoors = gameStage.AllDoors;
+                
+            //set a winning door
+            doorSelector.SetWinningDoor(allDoors);
+            
+            //set the chosen (by user) door
+            doorSelector.SetChosenDoor(allDoors);
+            
+            // determine which door to open (the computer)
+            doorSelector.SetOpenDoor(allDoors);
+                
+            //apply change strategy
+            _changeStrategy.ChangeSelection(allDoors);
+            
+            // winnerChecker.KeepScore(allDoors);  
+            return winnerChecker.IsWinner(allDoors);
+
         }
     }
 }
-
