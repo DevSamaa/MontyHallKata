@@ -1,3 +1,4 @@
+using System.Linq;
 using MontyHallKata;
 using NSubstitute;
 using Xunit;
@@ -47,21 +48,20 @@ namespace MontyHallTests
         }
 
         [Fact]
-        public void ShouldOpen1OnList()
+        public void ShouldOpen3rdDoor()
         {
             var gameStage = new GameStage();
             var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
-            mockRandomNumber.Generate(1,3).Returns(2);
+            mockRandomNumber.Generate(0,2).Returns(1);
             var doorSelector = new DoorSelector(mockRandomNumber);
 
             gameStage.AllDoors[0].Winner = true;
             gameStage.AllDoors[0].Chosen = true;
             
             doorSelector.SetOpenDoor(gameStage.AllDoors);
-            
-            Assert.True(gameStage.AllDoors[1].Open || gameStage.AllDoors[2].Open==true);
-            Assert.True(gameStage.AllDoors[1].Open != gameStage.AllDoors[2].Open);
-            Assert.False(gameStage.AllDoors[0].Open);
+          
+            Assert.True(gameStage.AllDoors[2].Open); //third door should be open
+            Assert.False(gameStage.AllDoors[0].Open); //checking that winnning/chosen door should not be open
         }
 
         

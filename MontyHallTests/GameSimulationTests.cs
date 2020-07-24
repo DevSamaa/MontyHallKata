@@ -20,9 +20,12 @@ namespace MontyHallTests
         {
             var gameSimulation = new GameSimulation(new KeepStrategy());
             var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
-            mockRandomNumber.Generate().Returns(1);
+            mockRandomNumber.Generate().Returns(1); //set winning and chosen door to 1
+            mockRandomNumber.Generate(0,2).Returns(0);
+
             var result = gameSimulation.PlayARound(mockRandomNumber);
             Assert.True(result);
+            
         }
         
         [Fact]
@@ -52,10 +55,9 @@ namespace MontyHallTests
             var gameSimulation = new GameSimulation(new ChangeStrategy());
             var mockRandomNumber = Substitute.For<IRandomNumberGenerator>();
             mockRandomNumber.Generate().Returns(1,1);
+            mockRandomNumber.Generate(0, 2).Returns(0);
             var result = gameSimulation.PlayARound(mockRandomNumber);
             Assert.False(result);
         }
     }
 }
-
-//TODO figure out if I can mock the changestrategy and keepstrategy in the game simulation tests

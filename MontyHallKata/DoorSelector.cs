@@ -40,12 +40,12 @@ namespace MontyHallKata
 
            if (eligibleDoors.Count() > 1)
            {
-               var newNumber = _randomNumberGenerator.Generate(1, 3);
-               eligibleDoors[newNumber - 1].Open = true;
+               var newNumber = _randomNumberGenerator.Generate(0,2); 
+               eligibleDoors[newNumber].Open = true;
            }
         }
 
-       
+       //TODO see if you can do this witout eligible doors, but not a pressing issue.
 
       
     }
