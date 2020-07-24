@@ -6,6 +6,7 @@ namespace MontyHallTests
 {
     public class GameSimulationTests
     {
+        //this is the test double example
         [Fact]
         public void PlayingAWinningRoundShouldReturnTrueWithDouble()
         {
